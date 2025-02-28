@@ -1,0 +1,140 @@
+Numero totale di visite: 1569898
+
+Top 10 IP/Domini sorgente per numero di visite:
+edams.ksc.nasa.gov: 6530 visite
+piweba4y.prodigy.com: 4846 visite
+163.206.89.4: 4791 visite
+piweba5y.prodigy.com: 4607 visite
+piweba3y.prodigy.com: 4416 visite
+www-d1.proxy.aol.com: 3889 visite
+www-b2.proxy.aol.com: 3534 visite
+www-b3.proxy.aol.com: 3463 visite
+www-c5.proxy.aol.com: 3423 visite
+www-b5.proxy.aol.com: 3411 visite
+
+Top 10 pagine visitate:
+GET /images/NASA-logosmall.gif HTTP/1.0: 96841 visite
+GET /images/KSC-logosmall.gif HTTP/1.0: 75132 visite
+GET /images/MOSAIC-logosmall.gif HTTP/1.0: 66966 visite
+GET /images/USA-logosmall.gif HTTP/1.0: 66594 visite
+GET /images/WORLD-logosmall.gif HTTP/1.0: 65975 visite
+GET /images/ksclogo-medium.gif HTTP/1.0: 62293 visite
+GET /ksc.html HTTP/1.0: 43379 visite
+GET /history/apollo/images/apollo-logo1.gif HTTP/1.0: 37748 visite
+GET /images/launch-logo.gif HTTP/1.0: 35059 visite
+GET / HTTP/1.0: 29850 visite
+
+Top 10 IP/Domini per frequenza di collegamento:
+edams.ksc.nasa.gov: 6530 collegamenti
+piweba4y.prodigy.com: 4846 collegamenti
+163.206.89.4: 4791 collegamenti
+piweba5y.prodigy.com: 4607 collegamenti
+piweba3y.prodigy.com: 4416 collegamenti
+www-d1.proxy.aol.com: 3889 collegamenti
+www-b2.proxy.aol.com: 3534 collegamenti
+www-b3.proxy.aol.com: 3463 collegamenti
+www-c5.proxy.aol.com: 3423 collegamenti
+www-b5.proxy.aol.com: 3411 collegamenti
+
+Codici di stato sospetti:
+404: 10056 occorrenze
+403: 171 occorrenze
+500: 3 occorrenze
+
+Top 20 Richieste di grandi dimensioni:
+163.205.156.16 03/Aug/1995:15:51:23 -0400 GET /statistics/1995/Jul/Jul95_reverse_domains.html HTTP/1.0 3421948 bytes
+igate.nrc.gov 04/Aug/1995:10:03:28 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+cliffy.lfwc.lockheed.com 04/Aug/1995:11:29:24 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+lace.cs.bgu.ac.il 06/Aug/1995:13:46:30 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+magicall.dacom.co.kr 07/Aug/1995:08:48:08 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+m33-222-1.mit.edu 07/Aug/1995:18:28:57 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 3155499 bytes
+titan.oit.umass.edu 11/Aug/1995:10:53:34 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 3155499 bytes
+tmp.inet.it 11/Aug/1995:11:16:21 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+intergate.rbuhsd.k12.ca.us 11/Aug/1995:13:35:36 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+152.163.192.66 13/Aug/1995:16:10:24 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+www-c5.proxy.aol.com 15/Aug/1995:20:37:24 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+slip144-219.ut.nl.ibm.net 16/Aug/1995:16:53:28 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 3155499 bytes
+141.102.40.36 17/Aug/1995:10:13:42 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 3155499 bytes
+www-b2.proxy.aol.com 17/Aug/1995:13:36:18 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+sets12.sprl.umich.edu 21/Aug/1995:10:54:33 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 3155499 bytes
+grumpy.ksc.nasa.gov 21/Aug/1995:14:21:16 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 3155499 bytes
+piweba1y.prodigy.com 22/Aug/1995:16:20:30 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+133.55.2.210 23/Aug/1995:05:32:51 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+163.206.89.4 31/Aug/1995:14:40:34 -0400 GET /statistics/1995/bkup/Mar95_full.html HTTP/1.0 3155499 bytes
+128.159.144.102 21/Aug/1995:08:43:56 -0400 GET /statistics/1995/bkup/Mar95_full.html   HTTP/1.0 2981888 bytes
+
+Top 20 IP sospetti:
+163.206.89.4: 4791 occorrenze
+163.205.1.19: 1360 occorrenze
+163.205.3.104: 1292 occorrenze
+163.205.156.16: 1256 occorrenze
+163.205.19.20: 1252 occorrenze
+163.206.137.21: 1015 occorrenze
+163.205.11.31: 776 occorrenze
+163.205.16.75: 762 occorrenze
+163.205.23.76: 691 occorrenze
+199.1.50.225: 641 occorrenze
+163.205.23.93: 624 occorrenze
+163.205.121.3: 600 occorrenze
+163.206.140.4: 586 occorrenze
+163.206.104.34: 573 occorrenze
+163.205.154.11: 544 occorrenze
+163.205.16.100: 518 occorrenze
+199.201.186.103: 503 occorrenze
+163.205.23.71: 478 occorrenze
+163.234.140.22: 466 occorrenze
+163.205.150.22: 463 occorrenze
+
+Metodi HTTP utilizzati:
+GET: 1565812 occorrenze
+POST: 111 occorrenze
+HEAD: 3965 occorrenze
+6T7FF: 4 occorrenze
+huttle/countdown/: 1 occorrenze
+.: 2 occorrenze
+?: 1 occorrenze
+|t9ð'À|u: 2 occorrenze
+
+Richieste HTTP strane (oltre GET, POST, HEAD) e relativi IP:
+6T7FF: 4 richieste da 1 IP unici
+  - 128.159.144.83
+huttle/countdown/: 1 richieste da 1 IP unici
+  - bloor.torfree.net
+.: 2 richieste da 1 IP unici
+  - 128.159.117.22
+?: 1 richieste da 1 IP unici
+  - titan
+|t9ð'À|u: 2 richieste da 1 IP unici
+  - 163.206.42.13
+
+Top 5 picchi di traffico per ora e giorno:
+Picco 1: Il 31/Aug/1995 alle ore 11:00 con 6321 accessi
+Picco 2: Il 31/Aug/1995 alle ore 10:00 con 6283 accessi
+Picco 3: Il 31/Aug/1995 alle ore 13:00 con 5948 accessi
+Picco 4: Il 30/Aug/1995 alle ore 15:00 con 5919 accessi
+Picco 5: Il 31/Aug/1995 alle ore 09:00 con 5627 accessi
+
+
+
+2)Contestualizzazione:
+
+Nel mese di agosto 1995, la NASA stava vivendo un periodo di particolare rilevanza, con missioni spaziali in corso come la missione STS-69 (lanciata il 7 agosto) e i preparativi per il Mars Pathfinder, previsto per il 1997. Questi eventi hanno sicuramente contribuito ad aumentare l'interesse pubblico e professionale verso il sito web della NASA, come dimostrato dal traffico registrato nei log.
+
+Il totale di 1.555.720 visite è indicativo di un elevato volume di accessi al sito, probabilmente dovuto all'interesse crescente per le missioni spaziali in corso. In particolare, la top 10 degli IP/domini sorgente per numero di visite evidenzia una presenza significativa di reti universitarie, istituti di ricerca e provider di servizi internet come piweba.prodigy.com e proxy.aol.com, che indicano un forte interesse da parte di utenti accademici e professionisti del settore spaziale. La NASA, essendo una delle principali agenzie spaziali del mondo, attirava visitatori che cercavano informazioni dettagliate sulle missioni, il progresso delle tecnologie spaziali e i dati scientifici condivisi tramite il sito ufficiale.
+
+La presenza di immagini di branding come NASA-logosmall.gif e altre risorse grafiche tra le pagine più visitate conferma che il materiale promozionale e visivo relativo alle missioni, in particolare quelle di alto profilo come STS-69, stava venendo ampiamente condiviso e consultato. La pagina ksc.html, probabilmente contenente informazioni specifiche sul Kennedy Space Center, ha visto un numero significativo di accessi, suggerendo un forte interesse per le operazioni di lancio e per la NASA stessa come punto di riferimento.
+
+Nel contesto delle grandi dimensioni di alcune richieste (come il file Mar95_full.html da oltre 3 MB), è plausibile che alcuni utenti stessero scaricando rapporti completi o aggiornamenti dettagliati su missioni, dati scientifici e statistiche, un comportamento tipico di ricercatori e professionisti che seguivano da vicino gli sviluppi delle missioni spaziali.
+
+Nonostante l'evidente interesse legittimo, sono presenti anche segnali di possibili tentativi di accesso non autorizzato, come suggerito dall'elenco degli IP sospetti. Questi indirizzi, alcuni dei quali ripetuti più volte (ad esempio 163.206.89.4 con 4769 occorrenze), potrebbero indicare attività malevole, come tentativi di scraping aggressivo dei dati o addirittura tentativi di accedere a informazioni sensibili. La concentrazione di traffico proveniente da determinati IP, specialmente quelli che non corrispondono a fonti riconducibili a enti legittimi, può essere un segnale di attacchi informatici mirati a raccogliere dati riservati o a sfruttare vulnerabilità del sistema. Questo tipo di attività è particolarmente rilevante per la NASA, un'agenzia che gestisce una grande quantità di informazioni sensibili e dati relativi a missioni spaziali, esperimenti scientifici e ricerca avanzata.
+
+Alcuni degli IP sospetti (ad esempio 163.206.89.4, 163.205.1.19, e 163.205.156.16) appaiono in molteplici log, suggerendo un'azione sistematica e ripetuta. Questo tipo di traffico, sebbene possa derivare da bot legittimi, potrebbe anche riflettere tentativi di accesso illecito o la presenza di scanner automatici utilizzati da attaccanti per cercare vulnerabilità nel sistema della NASA. Il codice di stato 500, che indica errori di server interni, è un altro segnale che potrebbe suggerire dei malfunzionamenti causati da sovraccarichi o tentativi di exploit da parte di attaccanti che cercavano di interrompere o compromettere il servizio.
+
+In aggiunta, l'alto volume di richieste provenienti da indirizzi IP legati a proxy server, come quelli di AOL, può indicare che gli utenti tentavano di mascherare la loro vera identità o posizione geografica. Questo comportamento è spesso utilizzato per nascondere l'origine di accessi ripetuti o non autorizzati, aumentando la possibilità che si trattasse di tentativi malevoli. Inoltre, il picco di accessi a cavallo tra il 30 e il 31 agosto, suggerirebbe di approfondire quale evento l'abbia scaturita e suggerire l'aggiunta di disponibilità di server durante il prossimo evento analogo, con il fine di non causare sovraccarichi, rallentamenti o addirittura interruzioni del servizio futuri.
+
+In conclusione, sebbene gran parte del traffico web analizzato possa essere attribuito a un legittimo interesse verso le missioni spaziali della NASA, come la STS-69 e il Mars Pathfinder, è importante considerare anche l'ipotesi di attività malevole. Il traffico proveniente da IP sospetti, l'alto volume di richieste da indirizzi proxy e la presenza di errori di server indicano che la NASA potrebbe essere stata oggetto di tentativi di accesso non autorizzato o di raccolta dati non legittima, un rischio che aumenta in concomitanza con eventi ad alta visibilità e con la crescente importanza delle sue missioni.
+
+In considerazione di questi elementi, sarebbe opportuno prendere in considerazione alcune misure per ottimizzare la gestione delle risorse e garantire la sicurezza. Aggiungere capacità server durante le ore di picco, ad esempio dalle 10:00 alle 16:00, potrebbe ridurre i rischi di sovraccarichi e migliorare l'esperienza utente. Allo stesso modo, l'implementazione di protezioni contro il web scraping, come l'uso di CAPTCHA o il monitoraggio intensivo dei log, potrebbe mitigare i tentativi di raccolta dati non autorizzata. Un sistema di monitoraggio continuo per rilevare traffico sospetto, in particolare quello proveniente da indirizzi proxy, sarebbe cruciale per identificare tempestivamente possibili minacce. Inoltre, è importante rafforzare la protezione contro gli errori di server (500), che potrebbero derivare sia da malfunzionamenti interni che da attacchi informatici, implementando soluzioni di failover e bilanciamento del carico per garantire la resilienza del sistema. Infine, rivedere le politiche di accesso e aggiornare regolarmente i sistemi di sicurezza contribuirà a proteggere la NASA da tentativi di accesso non autorizzato e a garantire l'integrità dei dati sensibili.
+
+Oltre ai metodi HTTP più comuni (GET, POST e HEAD), l'analisi dei log ha evidenziato la presenza di richieste effettuate con metodi insoliti. La loro presenza in un log pubblico della NASA suggerisce comportamenti anomali o potenzialmente malevoli.
+

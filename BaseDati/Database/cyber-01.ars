@@ -1,0 +1,49 @@
+(* /*
+Sia dato un sistema di servizi WEB.
+Costruire un insieme di regole che:
+- caso01: per tutti gli indirizzi IP del server e
+  per la porta 8080 consentano
+  l'accesso alle pagine del sottoalbero /sito01/
+  del server mioserver
+
+- caso02: per tutti gli indirizzi IP del server e 
+  per la porta 80 consentano
+  l'accesso alle pagine del sottoalbero /sito02
+  del server mioserver
+
+- In via temporanea, in attesa del completamento
+  del sito per tutte le richieste su pagine
+  differenti rispondere con 
+  il messaggo "sito in allestimento"
+*/ *)
+
+DEFINE ipset caso01_ip = {*.*.*.*:8080}; 
+DEFINE ipset caso02_ip = {*.*.*.*:80};
+DEFINE ipset tuttigli_ip = {*.*.*.*:*};
+
+DEFINE urlset caso01_url = { /sito01, /sito01*, /sito01/*/ }; // */
+DEFINE urlset caso02_url = { /sito02, /sito02*, /sito02/*/ }; // */
+
+DEFINE AR "Caso01"
+    CONDITION
+       http.url is in caso01_url
+       net.ipdst is in caso01_ip
+    ACTION
+        TCP.REDIRECT "mioserver:8080"
+    ;
+
+DEFINE AR "Caso02"
+    CONDITION
+       http.url is in caso02_url
+       net.ipdst is in caso02_ip
+    ACTION
+        TCP.REDIRECT "mioserver:80"
+    ;
+
+DEFINE AR "Il Resto"
+    CONDITION
+       net.ipdst is in tuttigli_ip
+    ACTION
+        ANSWER "<h1>Sito in allestimento</h1>"
+    ;
+

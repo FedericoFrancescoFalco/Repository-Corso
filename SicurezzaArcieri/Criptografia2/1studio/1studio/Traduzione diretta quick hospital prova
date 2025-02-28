@@ -1,0 +1,164 @@
+Traduzione diretta quick hospital
+
+create domain StringaNN as varchar
+check (value not null);
+
+create domain PosInteger as integer
+check (value >= 0);
+
+create domain CodFisc as varchar(16)
+check (value ~[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]');
+
+create domain Telefono as varchar
+check (value ~ '+?[0-9]+');
+
+create domain Email as varchar
+check (value not null);
+
+create type Indirizzo(
+	via StringaNN,
+	cap StringaNN,
+	civico StringaNN
+);
+
+create domain Tipocap as varchar(5)
+chech (value ~[0-9]{5}');
+
+
+
+create table Nazione (
+nome: varchar not null,
+primary key (nome)
+);
+
+create table Citta (
+nome: varchar not null,
+nazione : varchar,
+primary key (nome),
+foreign key (nazione) reference Nazione(nome)
+);
+
+create table CAP (
+valore Tipocap not null,
+citta: varchar,
+primary key (valore),
+foreign key (citta) reference Citta(nome)
+);
+
+create table Persona (
+nome varchar not null,
+cognome varchar not null,
+nascita date not null,
+cf CodFisc not null,
+primary key (cf)
+);
+
+create table PazienteTelefono (
+valore Telefono not null,
+primary key (valore)
+);
+
+create table Paziente (
+id Serial not null,
+email Email,
+persona CodFisc not null,
+telefono Telefono,
+citta varchar not null,
+primary key (id, persona),
+foreign key (persona) reference Persona(cf),
+foreign key (telefono) reference PazienteTelefono(valore),
+foreign key (citta) refernce Citta(nome)
+);
+
+create table Residenza (
+indirizzo Indirizzo not null,
+paziente Integer not null,
+cap Tipocap not null,
+primary key (paziente),
+foreign key (paziente) reference Paziente(id),
+foreign key (cap) reference CAP(cap)
+);
+
+create table Medico (
+id Serial not null,
+persona Integer not null,
+primary key (persona, id),
+foreign key (persona) reference Persona(id) 
+);
+
+create table Settore (
+id Serial not null,
+nome PosInteger not null,
+primary key (id)
+);
+
+create table Piano (
+numero Integer not null,
+primary key (numero)
+);
+
+create table Stanza (
+id Serial not null,
+piano Integer not null,
+settore Integer not null,
+primary key (id),
+foreign key (piano) reference Piano(numero),
+foreign key (settore) reference Settore(id) 
+);
+
+create table Letto (
+id Serial not null,
+numero PosInteger not null,
+stanza Integer not null,
+primary key (id, stanza),
+foreign key (stanza) reference Stanza(id)
+);
+
+create table Prestazione (
+id Serial not null,
+inizio Date not null,
+fine Date,
+paziente Integer not null,
+medico Integer not null,
+primary key (id),
+foreign key (paziente) reference Paziente(id),
+foreign key (medico) reference Medico(id)
+);
+
+create table Specializzazione (
+nome varchar not null,
+primary key (nome)
+);
+
+create table Med_Spec_Primaria (
+medico PosInteger not null,
+specializzazione varchar not null,
+primary key (medico),
+foreign key (medico) refernce Medico(id),
+foreign key (specializzazione) refernce Specializzazione(nome)
+);
+
+create table Med_Spec (
+medico PosInteger not null,
+specializzazione varchar not null,
+primary key (medico, specializzazione),
+foreign key (medico) refernce Medico(id),
+foreign key (specializzazione) refernce Specializzazione(nome)
+);
+
+create table PrestEsterna (
+descrizione varchar not null,
+prestazione PosInteger not null,
+specializzazione varchar not null,
+primary key (prestazione),
+foreign key (prestazione) reference Prestazione(id),
+foreign key (specializzazione) reference Specializzazione(nome)
+);
+
+create table Ricovero (
+prestazione PosInteger not null,
+letto PosInteger not null,
+primary key (prestazione),
+foreign key (prestazione) reference Prestazione(id),
+foreign key (letto) reference Letto(id)
+);

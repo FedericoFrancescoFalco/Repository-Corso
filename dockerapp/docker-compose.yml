@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+    - localdatabase:/data/db
+    networks:
+    - composenetwork
+
+    mongo:express:
+      image: mongo-express
+      restart: always
+      ports:
+        - 8081:8081
+      enviroment:
+        - ME_CONFIG_MONGODB_SERVER=mongo
+        - ME_CONFIG_MONGODB_PORT=27017
+      networks:
+        - composenetwork
+      depends_on:
+        - mongo
+
+volumes:
+localadtbase:
+
+networks:
+composenetwork:
+driver: bridge

@@ -1,0 +1,62 @@
+{
+    "dctnst34b56h501u": {
+        "nome": "mario",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h501u"
+    },
+    "dctnst34b56h501a": {
+        "nome": "gianni",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h501u"
+    },
+    "dctnst34b56h503e": {
+        "nome": "maria",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h501u"
+    },
+    "dctnst34b56h502w": {
+        "nome": "silvia",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h501u"
+    },
+    "aaaaa": {
+        "nome": "Paolo",
+        "cognome": "Rossi",
+        "data nascita": "24/02/1990",
+        "codice fiscale": "aaaaa"
+    },
+    "CGJSYEUJFGHTYUEUH": {
+        "nome": "Vladimiro Putino",
+        "cognome": "Baubau",
+        "data nascita": "31/07/1823",
+        "codice fiscale": "CGJSYEUJFGHTYUEUH"
+    },
+    "GFGFGFGSGSGGE": {
+        "nome": "Simon",
+        "cognome": "Gallup",
+        "data nascita": "31/06/1981",
+        "codice fiscale": "GFGFGFGSGSGGE"
+    },
+    "RBRIANRBST": {
+        "nome": "Robert",
+        "cognome": "Smith",
+        "dataNascita": "31/07/1985",
+        "codFiscale": "RBRIANRBST"
+    },
+    "smndaiwearo2301lasdlh501i": {
+        "nome": "simone",
+        "cognome": "galloppo",
+        "dataNascita": "31/07/1985",
+        "codFiscale": "smndaiwearo2301lasdlh501i"
+    },
+    "smittonian": {
+        "nome": "roberto",
+        "cognome": "smitto",
+        "dataNascita": "24/04/1950",
+        "codFiscale": "smittonian"
+    }
+}

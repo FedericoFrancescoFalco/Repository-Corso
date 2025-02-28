@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Interfaccia API</title>
+</head>
+<body>
+
+<h2>Seleziona un'operazione:</h2>
+<button onclick="sendRequest(1)">1. Crea favola</button>
+<button onclick="sendRequest(2)">2. Rispondi a domanda</button>
+<button onclick="sendRequest(3)">3. Analizza argomento</button>
+<button onclick="sendRequest(4)">4. Analizza immagine</button>
+<button onclick="sendRequest(5)">5. Esci</button>
+
+<div id="output">Risultati appariranno qui...</div>
+
+<script>
+    function sendRequest(operazione) {
+        const output = document.getElementById('output');
+        output.textContent = "Caricamento...";
+
+        const data = {
+            operazione: operazione
+        };
+
+        fetch('/esegui-operazione', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            output.textContent = result.message;
+        })
+        .catch(error => {
+            output.textContent = "Errore: " + error;
+        });
+    }
+</script>
+
+</body>
+</html>

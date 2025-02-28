@@ -1,0 +1,134 @@
+
+
+### **1. Voli di durata maggiore della durata media dei voli della stessa compagnia**
+```sql
+SELECT DISTINCT V.codice, V.comp, V.durataMinuti
+FROM Volo V
+WHERE V.durataMinuti > (
+    SELECT AVG(V1.durataMinuti)
+    FROM Volo V1
+    WHERE V1.comp = V.comp
+);
+```
+
+---
+
+### **2. Città con più di un aeroporto e con almeno un volo operato da "Apitalia"**
+```sql
+SELECT DISTINCT L.citta
+FROM LuogoAeroporto L
+WHERE (SELECT COUNT(*) 
+       FROM Aeroporto A 
+       WHERE A.codice = L.aeroporto) > 1
+  AND EXISTS (
+      SELECT 1
+      FROM ArrPart AP
+      WHERE AP.partenza IN (SELECT A.codice FROM Aeroporto A WHERE A.codice = L.aeroporto)
+        AND AP.comp = 'Apitalia'
+  );
+```
+
+---
+
+### **3. Coppie di aeroporti (A, B) con lo stesso numero di voli in entrambe le direzioni**
+```sql
+SELECT DISTINCT AP1.partenza AS aeroportoA, AP1.arrivo AS aeroportoB
+FROM ArrPart AP1
+JOIN ArrPart AP2
+  ON AP1.partenza = AP2.arrivo AND AP1.arrivo = AP2.partenza
+GROUP BY AP1.partenza, AP1.arrivo
+HAVING COUNT(*) = (
+    SELECT COUNT(*)
+    FROM ArrPart AP
+    WHERE AP.partenza = AP1.arrivo AND AP.arrivo = AP1.partenza
+);
+```
+
+---
+
+### **4. Compagnie con durata media voli maggiore della media di tutte le compagnie**
+```sql
+SELECT DISTINCT V.comp
+FROM Volo V
+GROUP BY V.comp
+HAVING AVG(V.durataMinuti) > (
+    SELECT AVG(V1.durataMinuti)
+    FROM Volo V1
+);
+```
+
+---
+
+### **5. Aeroporti con voli verso almeno 2 nazioni diverse**
+```sql
+SELECT DISTINCT A.codice
+FROM Aeroporto A
+JOIN ArrPart AP ON A.codice = AP.partenza
+JOIN LuogoAeroporto L ON AP.arrivo = L.aeroporto
+GROUP BY A.codice
+HAVING COUNT(DISTINCT L.nazione) >= 2;
+```
+
+---
+
+### **6. Voli che partono da città con un unico aeroporto**
+```sql
+SELECT DISTINCT V.codice, V.comp, AP.partenza, AP.arrivo
+FROM Volo V
+JOIN ArrPart AP ON V.codice = AP.codice AND V.comp = AP.comp
+WHERE AP.partenza IN (
+    SELECT L.aeroporto
+    FROM LuogoAeroporto L
+    GROUP BY L.citta
+    HAVING COUNT(*) = 1
+);
+```
+
+---
+
+### **7. Aeroporti raggiungibili da "JFK" tramite voli diretti e indiretti**
+```sql
+SELECT DISTINCT arrivo
+FROM ArrPart AP1
+WHERE AP1.partenza = 'JFK'
+UNION
+SELECT DISTINCT AP2.arrivo
+FROM ArrPart AP1
+JOIN ArrPart AP2 ON AP1.arrivo = AP2.partenza
+WHERE AP1.partenza = 'JFK';
+```
+
+---
+
+### **8. Città raggiungibili con voli diretti e indiretti partendo da Roma**
+```sql
+SELECT DISTINCT L1.citta
+FROM LuogoAeroporto L1
+JOIN ArrPart AP1 ON L1.aeroporto = AP1.arrivo
+WHERE AP1.partenza IN (
+    SELECT A1.codice
+    FROM LuogoAeroporto A1
+    WHERE A1.citta = 'Roma'
+)
+UNION
+SELECT DISTINCT L2.citta
+FROM LuogoAeroporto L1
+JOIN ArrPart AP1 ON L1.aeroporto = AP1.partenza
+JOIN ArrPart AP2 ON AP1.arrivo = AP2.partenza
+JOIN LuogoAeroporto L2 ON AP2.arrivo = L2.aeroporto
+WHERE L1.citta = 'Roma';
+```
+
+---
+
+### **9. Città raggiungibili con esattamente uno scalo da "JFK"**
+```sql
+SELECT DISTINCT L.citta
+FROM ArrPart AP1
+JOIN ArrPart AP2 ON AP1.arrivo = AP2.partenza
+JOIN LuogoAeroporto L ON AP2.arrivo = L.aeroporto
+WHERE AP1.partenza = 'JFK';
+```
+
+
+

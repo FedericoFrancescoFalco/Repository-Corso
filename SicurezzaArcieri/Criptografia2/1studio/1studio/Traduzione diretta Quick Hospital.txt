@@ -1,0 +1,264 @@
+create domain Stringa as varchar(100);
+
+create domain StringaNN as varchar
+check (value not null);
+
+create domain IntegerNN as Integer
+check (value not null);
+
+create domain IntegerGZ as integer
+check (value >= 0);
+
+create domain CodiceFiscale as varchar(16)
+check (value ~[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]')
+
+create domain Telefono as varchar
+check (value ~ '+?[0-9]+');
+
+create domain Email as varchar
+check (value not null);
+
+create type Indirizzo(
+	via StringaNN,
+	cap StringaNN,
+	civico StringaNN
+);
+
+
+
+
+
+create table Nazione(
+	id serial,
+	nome StringaNN,
+	primary key (id)
+);
+
+create table Citta(
+	id serial,
+	nome StringaNN,
+	nazione integer,
+	primary key (id),
+	foreign key (nazione) references Nazione(id)
+);
+
+create table Cap(
+	id serial,
+	valore IntegerNN,
+	citta integer,
+	primary key (id),
+	foreign key (citta) references Citta(id)
+);
+
+create table Persona(
+	nome StringaNN,
+	cognome StringaNN,
+	nascita date not null,
+	cf CodiceFiscale,
+	primary key (cf)
+);
+
+ create table PazienteTelefono(
+ 	valore Telefono,
+ 	primary key(valore)
+ );
+
+ -- Tabella Paziente (continuazione dello schema)
+create table Paziente(
+    cf CodiceFiscale,  -- Chiave primaria, ereditata da Persona
+    email Email,       -- Campo opzionale per l'email
+    primary key (cf),
+    foreign key (cf) references Persona(cf)
+);
+
+-- Relazione tra Paziente e PazienteTelefono
+create table PazienteTelefonoAssoc(
+    paziente CodiceFiscale,
+    telefono Telefono,
+    primary key (paziente, telefono),
+    foreign key (paziente) references Paziente(cf),
+    foreign key (telefono) references PazienteTelefono(valore)
+);
+
+-- Tabella Medico
+create table Medico(
+    id serial,
+    cf CodiceFiscale not null, -- Ogni medico è una Persona
+    primary key (id),
+    foreign key (cf) references Persona(cf)
+);
+
+-- Tabella Specializzazione
+create table Specializzazione(
+    nome StringaNN, -- Nome della specializzazione
+    primary key (nome)
+);
+
+-- Tabella MedSpecPrimaria (associazione primaria tra Medico e Specializzazione)
+create table MedSpecPrimaria(
+    medico integer not null,
+    specializzazione StringaNN not null,
+    primary key (medico, specializzazione),
+    foreign key (medico) references Medico(id),
+    foreign key (specializzazione) references Specializzazione(nome)
+);
+
+-- Tabella MedSpec (specializzazioni aggiuntive per ogni Medico)
+create table MedSpec(
+    medico integer not null,
+    specializzazione StringaNN not null,
+    primary key (medico, specializzazione),
+    foreign key (medico) references Medico(id),
+    foreign key (specializzazione) references Specializzazione(nome)
+);
+
+-- Tabella Letto
+create table Letto(
+    id serial,
+    numero IntegerGZ not null, -- Numero del letto
+    stanza integer not null,   -- Relazione con la stanza
+    primary key (id),
+    foreign key (stanza) references Stanza(id)
+);
+
+-- Tabella Stanza
+create table Stanza(
+    id serial,
+    piano integer not null, -- Relazione con il piano
+    primary key (id),
+    foreign key (piano) references Piano(id)
+);
+
+-- Tabella Piano
+create table Piano(
+    id serial,
+    numero IntegerNN, -- Numero del piano
+    primary key (id)
+);
+
+-- Tabella Prestazione (attività legata a pazienti e medici)
+create table Prestazione(
+    id serial,
+    inizio timestamp not null,
+    fine timestamp,
+    is_term boolean not null, -- Flag per indicare se la prestazione è terminata
+    paziente CodiceFiscale,  -- Relazione con il paziente
+    medico integer,          -- Relazione con il medico
+    primary key (id),
+    foreign key (paziente) references Paziente(cf),
+    foreign key (medico) references Medico(id)
+);
+
+-- Tabella Ricovero (associata alla Prestazione)
+create table Ricovero(
+    id serial,
+    prestazione integer not null,
+    primary key (id),
+    foreign key (prestazione) references Prestazione(id)
+);
+
+-- Tabella PrestEsterna
+create table PrestEsterna(
+    id serial,
+    descrizione Stringa, -- Descrizione della prestazione esterna
+    prestazione integer not null,
+    primary key (id),
+    foreign key (prestazione) references Prestazione(id)
+);
+
+-- Relazione residenza (Paziente -> Indirizzo)
+create table Residenza(
+    paziente CodiceFiscale,
+    indirizzo Indirizzo,
+    primary key (paziente),
+    foreign key (paziente) references Paziente(cf)
+);
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+create table Nazione(
+    id serial,
+    nome varchar(100) not null,
+    primary key (id)
+);
+
+create table Citta(
+    id serial,
+    nome varchar(100) not null,
+    nazione integer not null,
+    primary key (id),
+    foreign key (nazione) references Nazione(id)
+);
+
+create table Persona(
+    cf varchar(16) not null,
+    nome varchar(100) not null,
+    cognome varchar(100) not null,
+    nascita date not null,
+    primary key (cf)
+);
+
+create table Paziente(
+    cf varchar(16) not null,
+    email varchar(100),
+    primary key (cf),
+    foreign key (cf) references Persona(cf)
+);
+
+create table Telefono(
+    valore varchar(15) not null check (valore ~ '^[+0-9]+$'),
+    primary key (valore)
+);
+
+create table PazienteTelefono(
+    paziente varchar(16) not null,
+    telefono varchar(15) not null,
+    primary key (paziente, telefono),
+    foreign key (paziente) references Paziente(cf),
+    foreign key (telefono) references Telefono(valore)
+);
+
+create table Medico(
+    id serial,
+    cf varchar(16) not null unique,
+    primary key (id),
+    foreign key (cf) references Persona(cf)
+);
+
+create table Specializzazione(
+    nome varchar(100) not null,
+    primary key (nome)
+);
+
+create table MedSpec(
+    medico integer not null,
+    specializzazione varchar(100) not null,
+    primary key (medico, specializzazione),
+    foreign key (medico) references Medico(id),
+    foreign key (specializzazione) references Specializzazione(nome)
+);
+
+create table Letto(
+    id serial,
+    numero integer not null check (numero >= 0),
+    stanza integer not null,
+    primary key (id),
+    foreign key (stanza) references Stanza(id)
+);
+
+create table Stanza(
+    id serial,
+    piano integer not null,
+    primary key (id),
+    foreign key (piano) references Piano(id)
+);
+
+create table Piano(
+    id serial,
+    numero integer not null,
+    primary key (id)
+);

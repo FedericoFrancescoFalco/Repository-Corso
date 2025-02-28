@@ -1,0 +1,100 @@
+Il database Cielo è definito sul seguente insieme di domini e sul seguente schema
+relazionale con vincoli.
+Definizione dei domini
+• PosInteger
+integer ≥ 0
+• StringaM
+varchar(100)
+• CodIATA
+char(3)
+Schema relazionale con vincoli della base dati
+Volo (codice: PosInteger, comp: StringaM, durataMinuti: PosInteger)
+[VincoloDB.1] foreign key: comp references Compagnia(nome)
+[VincoloDB.2] foreign key: (codice, comp) references ArrPart(codice, comp)
+ArrPart (codice: PosInteger, comp: StringaM, arrivo: CodIATA, partenza: CodIATA)
+[VincoloDB.3] foreign key: (codice, comp) references Volo(codice, comp)
+[VincoloDB.4] foreign key: arrivo references Aeroporto(codice)
+[VincoloDB.5] foreign key: partenza references Peroporto(codice)
+Aeroporto (codice: CodIATA, nome: StringaM)
+[VincoloDB.6] foreign key: codice references LuogoAeroporto(aeroporto)
+LuogoAeroporto (aeroporto: CodIATA, citta: StringaM, nazione: StringaM)
+[VincoloDB.7] foreign key: aeroporto references Aeroporto(codice)
+Compagnia (nome: StringaM, annoFondaz*: PosInteger)
+(*): può essere NULL
+
+TABELLA VOLO
+
+
+ codice |   comp    | durataminuti 
+--------+-----------+--------------
+    132 | MagicFly  |          600
+    263 | Caimanair |          382
+    534 | Apitalia  |          432
+   1265 | Apitalia  |          382
+     24 | Apitalia  |          599
+    133 | MagicFly  |           60
+    264 | Caimanair |           60
+    535 | Apitalia  |          150
+    134 | MagicFly  |          600
+    265 | Caimanair |          601
+    536 | Apitalia  |          599
+
+__________________________________________________________________________________
+
+
+TABELLA ARRPART
+
+
+ codice |   comp    | arrivo | partenza 
+--------+-----------+--------+----------
+    132 | MagicFly  | FCO    | JFK
+    263 | Caimanair | FCO    | CIA
+    534 | Apitalia  | JFK    | CIA
+   1265 | Apitalia  | CIA    | FCO
+     24 | Apitalia  | FCO    | JFK
+    133 | MagicFly  | CDG    | HTR
+    264 | Caimanair | HTR    | CDG
+    535 | Apitalia  | FCO    | HTR
+    134 | MagicFly  | JFK    | FCO
+    265 | Caimanair | JFK    | FCO
+    536 | Apitalia  | JFK    | FCO
+
+__________________________________________________________________________________
+
+
+TABELLA AEROPORTO
+
+
+ codice |                 nome                 
+--------+--------------------------------------
+ JFK    | JFK Airport
+ FCO    | Aeroporto di Roma Fiumicino
+ CIA    | Aeroporto di Roma Ciampino
+ CDG    | Charles de Gaulle, Aeroport de Paris
+ HTR    | Heathrow Airport, London
+
+__________________________________________________________________________________
+
+
+TABELLA LUOGOAEROPORTO
+
+
+ aeroporto |  citta   |    nazione     
+-----------+----------+----------------
+ JFK       | New York | USA
+ FCO       | Roma     | Italy
+ CIA       | Roma     | Italy
+ CDG       | Paris    | France
+ HTR       | London   | United Kingdom
+
+__________________________________________________________________________________
+
+
+TABELLA COMPAGNIA
+
+
+   nome    | annofondaz 
+-----------+------------
+ Caimanair |       1954
+ Apitalia  |       1900
+ MagicFly  |       1990

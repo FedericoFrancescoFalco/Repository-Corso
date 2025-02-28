@@ -1,0 +1,101 @@
+Traduzione diretta quick hospital
+
+create table Nazione (
+nome: varchar not null,
+primary key (nome)
+);
+
+create table Citta (
+nome: varchar not null,
+nazione : varchar,
+primary key (nome),
+foreign key (nazione) reference Nazione(nome)
+);
+
+create table CAP (
+valore Tipocap not null,
+citta: varchar,
+primary key (valore),
+foreign key (citta) reference Citta(nome)
+);
+
+create table Persona (
+nome varchar not null,
+cognome varchar not null,
+nascita date not null,
+cf CodFisc not null,
+primary key (cf)
+);
+
+create table PazienteTelefono (
+valore Telefono not null,
+primary key (valore)
+);
+
+create table Paziente (
+id Serial not null,
+email Email,
+persona CodFisc not null,
+telefono Telefono,
+citta varchar not null,
+primary key (id, persona),
+foreign key (persona) reference Persona(cf),
+foreign key (telefono) reference PazienteTelefono(valore),
+foreign key (citta) refernce Citta(nome)
+);
+
+create table Residenza (
+indirizzo Indirizzo not null,
+paziente Integer not null,
+cap Tipocap not null,
+primary key (paziente),
+foreign key (paziente) reference Paziente(id),
+foreign key (cap) reference CAP(cap)
+);
+
+create table Medico (
+id Serial not null,
+persona Integer not null,
+primary key (persona, id),
+foreign key (persona) reference Persona(id) 
+);
+
+create table Settore (
+id Serial not null,
+nome PosInteger not null,
+primary key (id)
+);
+
+create table Piano (
+numero Integer not null,
+primary key (numero)
+);
+
+create table Stanza (
+id Serial not null,
+piano Integer not null,
+settore Integer not null,
+primary key (id),
+foreign key (piano) reference Piano(numero),
+foreign key (settore) reference Settore(id) 
+);
+
+create table Letto (
+id Serial not null,
+numero PosInteger not null,
+stanza Integer not null,
+primary key (id, stanza),
+foreign key (stanza) reference Stanza(id)
+);
+
+create table Prestazione (
+id Serial not null,
+inizio Date not null,
+fine Date,
+paziente Integer not null,
+medico Integer not null,
+primary key (id),
+foreign key (paziente) reference Paziente(id),
+foreign key (medico) reference Medico(id)
+);
+

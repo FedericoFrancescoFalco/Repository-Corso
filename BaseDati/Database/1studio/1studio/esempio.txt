@@ -1,0 +1,39 @@
+-- Creazione di un tipo ENUM
+CREATE TYPE tipo_utente AS ENUM ('Admin', 'Editor', 'Viewer');
+CREATE TYPE stato_ordine AS ENUM ('In elaborazione', 'Completato', 'Annullato');
+
+-- Creazione delle tabelle
+-- Creazione di tabelle con chiavi primarie e chiavi esterne
+
+-- Tabella Utente
+CREATE TABLE Utente (
+    id SERIAL PRIMARY KEY,       -- Chiave primaria
+    nome VARCHAR(100) NOT NULL,  -- Nome dell'utente
+    email VARCHAR(255) UNIQUE    -- Email unica per ogni utente
+);
+
+-- Tabella Prodotto
+CREATE TABLE Prodotto (
+    id SERIAL PRIMARY KEY,       -- Chiave primaria
+    nome VARCHAR(150) NOT NULL,  -- Nome del prodotto
+    prezzo DECIMAL(10, 2) NOT NULL -- Prezzo con due decimali
+);
+
+-- Tabella Ordine
+CREATE TABLE Ordine (
+    id SERIAL PRIMARY KEY,       -- Chiave primaria
+    utente_id INTEGER NOT NULL,  -- ID dell'utente che ha fatto l'ordine
+    data_ordine TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Data dell'ordine
+    totale DECIMAL(10, 2) NOT NULL, -- Totale dell'ordine
+    CONSTRAINT fk_utente FOREIGN KEY (utente_id) REFERENCES Utente (id) -- Chiave esterna
+);
+
+-- Tabella DettaglioOrdine
+CREATE TABLE DettaglioOrdine (
+    id SERIAL PRIMARY KEY,        -- Chiave primaria
+    ordine_id INTEGER NOT NULL,   -- ID dell'ordine
+    prodotto_id INTEGER NOT NULL, -- ID del prodotto
+    quantita INTEGER NOT NULL,    -- Quantità acquistata
+    CONSTRAINT fk_ordine FOREIGN KEY (ordine_id) REFERENCES Ordine (id), -- Chiave esterna
+    CONSTRAINT fk_prodotto FOREIGN KEY (prodotto_id) REFERENCES Prodotto (id) -- Chiave esterna
+);
